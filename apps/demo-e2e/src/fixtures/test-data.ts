@@ -1,3 +1,4 @@
 export const DEMO_URLS = {
-  cropper: '/',
+  root: '/',
+  cropper: '/cropper',
 } as const;

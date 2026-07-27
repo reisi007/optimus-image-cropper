@@ -27,7 +27,7 @@ const INVALID_IMAGE = 'https://invalid.example/nonexistent.jpg';
 <div class="cropper-demo">
 
   <section class="cropper-demo__section">
-    <h2 class="cropper-demo__heading">Basic Cropper (16:9)</h2>
+    <h2 id="basic-cropper" class="cropper-demo__heading">Basic Cropper (16:9)</h2>
     <p class="cropper-demo__description">Default 16:9 aspect ratio. Drag to crop, zoom with +/-, rotate with the slider.</p>
     <p-card>
       <div class="cropper-demo__card-body">
@@ -58,7 +58,7 @@ const INVALID_IMAGE = 'https://invalid.example/nonexistent.jpg';
   </section>
 
   <section class="cropper-demo__section">
-    <h2 class="cropper-demo__heading">Square 1:1 (Fixed Aspect)</h2>
+    <h2 id="square-aspect" class="cropper-demo__heading">Square 1:1 (Fixed Aspect)</h2>
     <p class="cropper-demo__description">Fixed 1:1 aspect ratio in a 320px square container. No aspect dropdown shown.</p>
     <p-card>
       <div class="cropper-demo__card-body">
@@ -83,7 +83,7 @@ const INVALID_IMAGE = 'https://invalid.example/nonexistent.jpg';
   </section>
 
   <section class="cropper-demo__section">
-    <h2 class="cropper-demo__heading">Free Aspect Ratio</h2>
+    <h2 id="free-aspect" class="cropper-demo__heading">Free Aspect Ratio</h2>
     <p class="cropper-demo__description">Container has 4:3 aspect ratio. Aspect ratio selector is visible.</p>
     <p-card>
       <div class="cropper-demo__card-body">
@@ -110,7 +110,7 @@ const INVALID_IMAGE = 'https://invalid.example/nonexistent.jpg';
   </section>
 
   <section class="cropper-demo__section">
-    <h2 class="cropper-demo__heading">Fixed Width with Sidebar</h2>
+    <h2 id="fixed-width" class="cropper-demo__heading">Fixed Width with Sidebar</h2>
     <p class="cropper-demo__description">Set a fixed width like <code>[width]="600"</code> so the cropper size stays constant regardless of sibling layout changes.</p>
     <p-card>
       <div class="cropper-demo__card-body">
@@ -130,7 +130,7 @@ const INVALID_IMAGE = 'https://invalid.example/nonexistent.jpg';
   </section>
 
   <section class="cropper-demo__section">
-    <h2 class="cropper-demo__heading">Error Handling</h2>
+    <h2 id="error-state" class="cropper-demo__heading">Error Handling</h2>
     <p class="cropper-demo__description">When the image fails to load, a <code>loadError</code> event is emitted.</p>
     <p-card>
       <div class="cropper-demo__card-body cropper-demo__card-body--stacked">
@@ -152,7 +152,7 @@ const INVALID_IMAGE = 'https://invalid.example/nonexistent.jpg';
   </section>
 
   <section class="cropper-demo__section">
-    <h2 class="cropper-demo__heading">Dynamic Configuration</h2>
+    <h2 id="dynamic-config" class="cropper-demo__heading">Dynamic Configuration</h2>
     <p class="cropper-demo__description">Change aspect ratio, format, quality, and output size on the fly.</p>
     <p-card>
       <div class="cropper-demo__card-body cropper-demo__card-body--stacked">
@@ -243,7 +243,7 @@ const INVALID_IMAGE = 'https://invalid.example/nonexistent.jpg';
   </section>
 
   <section class="cropper-demo__section">
-    <h2 class="cropper-demo__heading">Toolbar Positions</h2>
+    <h2 id="toolbar-positions" class="cropper-demo__heading">Toolbar Positions</h2>
     <p class="cropper-demo__description">The toolbar can be placed at top, bottom (default), left, or right.</p>
     <p-card>
       <div class="cropper-demo__card-body">
@@ -270,7 +270,7 @@ const INVALID_IMAGE = 'https://invalid.example/nonexistent.jpg';
   </section>
 
   <section class="cropper-demo__section">
-    <h2 class="cropper-demo__heading">Constrain to Image</h2>
+    <h2 id="constrain-image" class="cropper-demo__heading">Constrain to Image</h2>
     <p class="cropper-demo__description">
       When <code>constrainToImage</code> is <code>true</code> (default), the crop selection cannot leave the original image area — even when zooming out or rotating.
     </p>

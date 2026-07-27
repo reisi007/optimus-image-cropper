@@ -23,12 +23,10 @@ export default defineConfig({
       use: { ...devices['Pixel 7'] },
     },
   ],
-  ...(isCI ? {
-    webServer: {
-      command: 'node src/serve-spa.mjs',
-      url: 'http://localhost:4200',
-      reuseExistingServer: false,
-      timeout: 30000,
-    },
-  } : {}),
+  webServer: {
+    command: 'node src/serve-spa.mjs',
+    url: 'http://localhost:4200',
+    reuseExistingServer: !isCI,
+    timeout: 30000,
+  },
 });

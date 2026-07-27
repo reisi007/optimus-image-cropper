@@ -121,10 +121,19 @@ Quelle: `packages/mat-extended/cropper/src/`
 - [x] Tailwind-Klassen durch eigenes Demo-SCSS ersetzen (Grid/Spacing/Container-Utilities)
 - [x] CSR (kein SSR — SSR nicht in der Vorlage)
 
-## Phase 8 — E2E (Playwright)
+## Phase 8 — E2E (Playwright) ✅ 26 Tests (13 chromimum-desktop + 13 mobile-chrome) all green
 
-- [ ] Smoke-Tests: Demo lädt, Cropper rendert Canvas, Zoom/Rotate über Toolbar, Crop-Ergebnis (Data-URL) erscheint
-- [ ] Abdeckung analog `apps/demo-e2e` der Vorlage
+- [x] Demo lädt mit Titel
+- [x] `/cropper`-Route rendert `oic-cropper`
+- [x] Canvas nach Bild-Lade sichtbar (deterministisch via `page.route` + Fixture-Bild)
+- [x] Zoom +/— ändert Zoom-%-Anzeige
+- [x] Rotate ±90° aktualisiert Rotations-Anzeige
+- [x] Crop-Ergebnis (img.cropper-demo__preview) erscheint nach Bild-Lade
+- [x] Error Handling: Fehlermeldung bei ungültiger URL
+- [x] 4 Toolbar-Positionen (bottom/top/left/right) rendered alle
+- [x] Aspect-Select sichtbar in Free-Aspect, unsichtbar in Fixed-Aspect (square)
+- [x] Keyboard-Navigation (Pfeiltasten) löst Crop-Update aus
+- [x] `pnpm nx e2e demo-e2e` läuft lokal (build dependency, webServer immer aktiv)
 
 ## Phase 9 — CI/CD (GitHub Actions, wie Vorlage)
 

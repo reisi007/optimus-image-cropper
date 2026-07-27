@@ -10,6 +10,7 @@
       "options": {
         "command": "playwright test --config=apps/demo-e2e/playwright.config.ts"
       },
+      "dependsOn": ["^build"],
       "configurations": {
         "production": {}
       }
