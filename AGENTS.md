@@ -30,7 +30,10 @@ Nach jeder Code-Änderung: build + test + lint der Library ausführen.
 ## Konventionen
 
 - Prefix: Klassen `Oic*`, Selektoren `oic-*`, DI-Token `OIC_*`, CSS-Vars `--oic-*`
-- Standalone Components, Signals (`input()`, `output()`, `model()`), `ChangeDetectionStrategy.OnPush`
+- Standalone Components, Signals (`input()`, `output()`, `model()`, `signal()`, `computed()`, `effect()`), `ChangeDetectionStrategy.OnPush`
+- **Keine** `@Input()`/`@Output()`-Dekoratoren, kein RxJS für Zustand/Reaktivität (Signals verwenden)
+- **Zoneless**: kein `zone.js` (weder App noch Tests), Demo nutzt `provideZonelessChangeDetection()`; UI-Updates nur über Signals/Template-Events — kein Code, der auf Zone-Ticks vertraut
+- E2E: Playwright mit **Chrome Desktop UND Mobile Chrome** (beide Projekte müssen grün sein)
 - **Kein Tailwind** (weder Library noch Demo), **kein Angular Material**
 - Styling über Optimus-Design-Tokens `var(--p-*)` (Aura-kompatibel), keine `--mat-sys-*`
 - Core-Klassen `OicCropperCanvas` / `OicCropperInteraction` bleiben framework-neutral (pure TS)

@@ -1,12 +1,6 @@
 import 'vitest-canvas-mock';
 import '@angular/compiler';
-import '@analogjs/vitest-angular/setup-zone';
-
-import {
-  BrowserTestingModule,
-  platformBrowserTesting,
-} from '@angular/platform-browser/testing';
-import { getTestBed } from '@angular/core/testing';
+import { setupTestBed } from '@analogjs/vitest-angular/setup-testbed';
 
 class ResizeObserverMock {
   observe() { return; }
@@ -26,7 +20,4 @@ class IntersectionObserverMock {
 }
 globalThis.IntersectionObserver = IntersectionObserverMock as unknown as typeof globalThis.IntersectionObserver;
 
-getTestBed().initTestEnvironment(
-  BrowserTestingModule,
-  platformBrowserTesting(),
-);
+setupTestBed({ zoneless: true });

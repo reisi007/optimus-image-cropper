@@ -34,6 +34,24 @@ Portierung des Image Croppers aus `/Users/florianreisinger/dev/angular-material-
 - [x] ESLint-Setup analog Vorlage; `pnpm nx build|test|lint` laufen durch
 - [x] Deps installieren: `@openng/optimus-ui`, `@openng/optimus-ui-themes`, `primelocale`
 
+## Phase 1b — Nacharbeiten Scaffold (neue Anforderungen)
+
+- [x] **Zoneless**: `zone.js` komplett entfernt (package.json, polyfills, test-setup), Demo auf
+      `provideZonelessChangeDetection()`, Vitest-Setup ohne zone.js-Imports (zoneless TestBed via `setupTestBed`)
+- [x] **Playwright**: zwei Projekte — `chromium-desktop` (Desktop Chrome) und `mobile-chrome` (devices['Pixel 7']),
+      beide müssen grün sein (lokal wie CI)
+- [x] **Signals-Audit**: kein `@Input()`/`@Output()`-Dekorator, kein RxJS für Zustand — nur Signals (bestätigt: keine Vorkommen in unserem Source)
+- [x] Verifikation: build/test/lint Library + build demo + e2e (beide Projekte) grün
+
+## Verifikations-Prozess (gilt für ALLE Phasen)
+
+Nach jeder abgeschlossenen Phase prüft ein separater Review-Agent:
+1. Sind alle Checkboxen der Phase wirklich erfüllt (Code inspizieren + Befehle ausführen)?
+2. Werden die Konventionen aus `AGENTS.md` eingehalten (Signals statt Dekoratoren/RxJS,
+   zoneless, kein Tailwind/Material, Prefixe, Tokens, primelocale)?
+3. Ergebnis: Checkboxen in dieser Datei aktualisieren — erledigte Punkte abhaken,
+   nicht erledigte Punkte präzise umformulieren, sodass der echte Stand sichtbar ist.
+
 ## Phase 2 — Shared Utils portieren (aus `packages/mat-extended/src/common/`)
 
 - [ ] `control-value-accessor.ts` → `OicValueAccessor` (+ Spec)
