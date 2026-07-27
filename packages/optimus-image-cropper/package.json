@@ -1,6 +1,6 @@
 {
   "name": "@all-the.rest/optimus-image-cropper",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Optimus UI Image Cropper — Canvas-based image cropping component for Angular",
   "license": "MIT",
   "author": "Florian Reisinger",
