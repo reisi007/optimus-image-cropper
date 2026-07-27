@@ -46,6 +46,7 @@ Nach jeder Code-Änderung: build + test + lint der Library ausführen.
 - CI: `.github/workflows/ci.yml` — test, lint, build, e2e, Demo-Deploy auf GitHub Pages (main)
 - Release: Tag `v*` → `.github/workflows/release.yml` → npm publish (`--provenance --access public`)
 - Versionierung: Nx release mit `currentVersionResolver: "git-tag"`
+- **CHANGELOG.md** muss bei jedem Release mit neuen Notes (Features, Fixes, Breaking Changes) aktualisiert werden, in umgekehrter chronologischer Reihenfolge
 
 ## Arbeitsweise des Haupt-Agenten (Orchestrierung)
 
