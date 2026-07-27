@@ -6,7 +6,7 @@ Canvas-basierter Angular Image Cropper (`OicCropper`) auf Basis von **Optimus UI
 
 ## Tech-Stack
 
-- Nx Monorepo + **pnpm** (Node >= 22)
+- Nx Monorepo + **pnpm** (Node >= 26, pnpm 11.10.0)
 - **Angular 21** (Vorgabe durch Optimus UI peerDependency `^21.0.0` — NICHT auf 22 heben)
 - Library: `packages/optimus-image-cropper` → npm `@all-the.rest/optimus-image-cropper` (ng-packagr)
 - Demo: `apps/demo` (Aura-Theme aus `@openng/optimus-ui-themes`), E2E: `apps/demo-e2e` (Playwright)
@@ -46,6 +46,21 @@ Nach jeder Code-Änderung: build + test + lint der Library ausführen.
 - CI: `.github/workflows/ci.yml` — test, lint, build, e2e, Demo-Deploy auf GitHub Pages (main)
 - Release: Tag `v*` → `.github/workflows/release.yml` → npm publish (`--provenance --access public`)
 - Versionierung: Nx release mit `currentVersionResolver: "git-tag"`
+
+## Arbeitsweise des Haupt-Agenten (Orchestrierung)
+
+- Der Haupt-Agent **steuert nur**: planen, delegieren, Status pflegen — er implementiert
+  und verifiziert **nichts selbst**
+- Jede Umsetzungsarbeit (Code, Tests, Konfiguration) läuft in **Subagenten**;
+  unabhängige Aufgaben parallel starten
+- Nach **jedem** abgeschlossenen Schritt prüft ein **separater Review-Subagent**,
+  ob die Punkte wirklich erledigt sind und die Konventionen dieser Datei eingehalten
+  werden (Signals statt `@Input`/`@Output`/RxJS, zoneless, kein Tailwind/Material,
+  Prefixe, Tokens, primelocale, Chrome Desktop + Mobile in E2E)
+- Ergebnis des Reviews: Checkboxen in `Agents.todo.md` abhaken oder so umschreiben,
+  dass der tatsächliche Stand sichtbar ist; veraltete Angaben in `AGENTS.md` korrigieren
+- **Push-Gate:** `git push` (und Repo-Anlage-Push) erst nach expliziter manueller
+  Freigabe durch den User
 
 ## Arbeitsliste
 

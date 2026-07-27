@@ -94,16 +94,20 @@ Quelle: `packages/mat-extended/cropper/src/`
   - Alle mit Fallback-Werten
 - [x] Kein Tailwind, keine Material-Imports
 
-## Phase 6 — Unit-Tests (Parität zur Vorlage: ~121 Cropper-Tests)
+## Phase 6 — Unit-Tests (Parität zur Vorlage: ~121 Cropper-Tests) ✅ 172 Tests passing
 
-- [ ] Fixtures kopieren: `__fixtures__/input-picsum-800x600.jpg`, `expected-picsum-1-1-300x300.png`
-- [ ] `cropper.spec.ts` (48 Tests): Port mit Renames; Canvas-Engine gemockt
-- [ ] `cropper-canvas.spec.ts` (23 Tests): node-canvas, SHA-256-Fixture-Vergleich, `test-output/`
-- [ ] `cropper-interaction.spec.ts` (22 Tests): 1:1-Port
-- [ ] `cropper-toolbar.component.spec.ts` (18 Tests): an Optimus-Komponenten anpassen (Button/Slider/Select-Selektoren, Events), Abdeckung gleichwertig inkl. a11y/Aria aus primelocale
-- [ ] `cropper-grid-overlay.component.spec.ts` (10 Tests): 1:1-Port
-- [ ] Common-Specs (CVA, platform, a11y) aus Phase 2
-- [ ] `pnpm nx test optimus-image-cropper` grün
+- [x] Fixtures kopieren: `__fixtures__/input-picsum-800x600.jpg` kopiert; `expected-picsum-1-1-300x300.png` existiert in Quelle nicht (wird zur Laufzeit generiert, SHA-256-Vergleich ist optional via try/catch)
+- [x] `cropper.spec.ts` (64 Tests, Quelle: 48 → erweitert um Port aller 48): vollständig portiert, Canvas-Engine gemockt, Aria-Tests an Optimus-p-button/p-slider-Struktur angepasst
+- [x] `cropper-canvas.spec.ts` (24 Tests, Quelle: 23): node-canvas, SHA-256-Fixture-Vergleich, `test-output/`; node-canvas `Image` als `globalThis.Image`-Mock (drawImage-Kompatibilität)
+- [x] `cropper-interaction.spec.ts` (25 Tests, Quelle: 22): 1:1-Port
+- [x] `cropper-toolbar.component.spec.ts` (17 Tests, Quelle: 18): an Optimus-Komponenten angepasst — Button-Klicks via inner `<button>`, Slider/Select-Events via Component-API (p-select appendTo="body" schwer simulierbar — 1 Test-Drop: `rotationSlider#type=range` entfällt da kein native range). Aria-Labels auf inneren Elementen geprüft (p-button button, p-slider-handle).
+  - **1 Test adaptiert**: `emits rotationStart on first slider value change` (neu, statt `pointerdown` auf slider → onSliderChange ruft rotationStart bei erstmaligem Aufruf auf)
+  - **1 Test entfallen**: `slider type is range` (p-slider ist kein native range)
+- [x] `cropper-grid-overlay.component.spec.ts` (10 Tests, Quelle: 10): 1:1-Port, Selektoren rui→oic
+- [x] Common-Specs: `control-value-accessor.spec.ts` (7), `platform.spec.ts` (6), `a11y.spec.ts` (14)
+- [x] `pnpm nx test optimus-image-cropper` → 172 Tests, 9 Files, alle grün
+- [x] `pnpm nx lint optimus-image-cropper` → keine Fehler
+- [x] `pnpm nx build optimus-image-cropper` → unverändert, Build OK
 
 ## Phase 7 — Demo-App (Route `/cropper`, Aura-Theme, kein Tailwind)
 
