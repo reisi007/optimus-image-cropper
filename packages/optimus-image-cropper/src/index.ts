@@ -6,5 +6,5 @@ export { OicCropperInteraction } from './core/cropper-interaction';
 export { OicCropper } from './cropper/cropper.component';
 export { OicCropperGridOverlay } from './cropper/cropper-grid-overlay.component';
 export { OicCropperToolbar } from './cropper/cropper-toolbar.component';
-export { OIC_CROPPER_INTL } from './cropper/cropper.intl';
+export { OIC_CROPPER_INTL, OIC_CROPPER_INTL_DEFAULTS, provideOicCropperIntl, provideOicCropperIntlFromPrimeLocale } from './cropper/cropper.intl';
 export type { OicCropperIntl } from './cropper/cropper.intl';

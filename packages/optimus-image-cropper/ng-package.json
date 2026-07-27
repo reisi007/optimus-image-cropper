@@ -3,6 +3,5 @@
   "dest": "../../dist/packages/optimus-image-cropper",
   "lib": {
     "entryFile": "src/index.ts"
-  },
-  "allowedNonPeerDependencies": ["primelocale"]
+  }
 }

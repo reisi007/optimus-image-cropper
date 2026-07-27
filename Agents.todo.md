@@ -80,6 +80,7 @@ Quelle: `packages/mat-extended/cropper/src/`
   - Aspect-Auswahl als Optimus `Select` (`@openng/optimus-ui/select`, `ngModel` + `appendTo="body"`)
   - API (Inputs/Outputs) identisch zur Vorlage
 - [x] **i18n via `primelocale`:** Injection-Token `OIC_CROPPER_INTL` mit Default-Strings aus `primelocale/js/en.js` (Keys `aria.zoomIn`, `aria.zoomOut`, `aria.rotateLeft`, `aria.rotateRight`; eigene Defaults für `fineRotation`, `aspectRatio`, `aspectFree`)
+- [x] **primelocale optional machen:** `primelocale` als **optionale peerDependency** (`peerDependenciesMeta.optional: true`, aus `dependencies` + `allowedNonPeerDependencies` entfernt); eigebauter **en-US-Fallback** in `cropper.intl.ts` (statischer `OIC_CROPPER_INTL_DEFAULTS`-String-Satz), kein Import von primelocale im Library-Bundel; stattdessen `provideOicCropperIntlFromPrimeLocale(locale)` für Konsumenten, die ein primelocale-Locale-Objekt übergeben; `provideOicCropperIntl(partial)` für direkte Überschreibung
 - [x] Public API `src/index.ts`: Alle Komponenten, Core-Klassen, Types, Config, Intl-Token exportiert
 - [x] Placeholder `OIC_VERSION`-Export + Spec entfernt
 - [x] Minimaler Smoke-Spec (`cropper.smoke.spec.ts`) — instanziiert `OicCropper` via TestBed
@@ -130,6 +131,7 @@ Quelle: `packages/mat-extended/cropper/src/`
   - test-and-build: System-Deps für node-canvas → `pnpm install --frozen-lockfile` → build + test + lint lib → build demo → Playwright → Upload `dist`-Artefakt
   - publish (needs test-and-build): `setup-node` mit npm registry → Download dist → `cd dist/packages/optimus-image-cropper && npm publish --provenance --access public` (mit `NODE_AUTH_TOKEN` aus `secrets.NPM_TOKEN`)
 - [x] Nx release: `currentVersionResolver: "git-tag"` in `nx.json` gesetzt
+- [x] **Versions-Parität lokal ↔ CI:** Node-Major (lokal 26 → CI 26), pnpm via `packageManager`-Feld (`pnpm@11.10.0`), engines.node auf `>=26` gesetzt; CI nutzt `pnpm/action-setup@v4` ohne Version-Input (liest automatisch aus `packageManager`)
 - [x] Dateien erstellt, YAML-Syntax geprüft, initialer Commit `ci: add CI and release workflows`
 - [ ] **HINWEIS:** Tatsächliche CI/CD-Ausführung kann erst nach `git push` und GitHub-Setup verifiziert werden (Repo anlegen, Remote setzen, Secrets hinterlegen)
 
@@ -143,7 +145,7 @@ Quelle: `packages/mat-extended/cropper/src/`
   - Provider: Optimus-Theme-Provider → `providePrimeNG({ theme: { preset: Aura } })`
   - Design-Tokens (`--p-*`) sind identisch, primelocale funktioniert für beide
   - Optional: Hinweis auf pnpm-Override/Alias-Ansatz (`"primeng": "npm:@openng/optimus-ui@…"` bzw. umgekehrt), damit ohne Codeänderung gewechselt werden kann
-- [ ] `gh repo create reisi007/optimus-image-cropper --public`, Remote setzen, initial push
+- [ ] `gh repo create reisi007/optimus-image-cropper --public`, Remote setzen — **PUSH ERST NACH MANUELLER FREIGABE durch den User** (Gate: vor `git push` explizit nachfragen)
 - [ ] GitHub Pages aktivieren (Workflow-basiert), Badge/Links in README
 
 ---
