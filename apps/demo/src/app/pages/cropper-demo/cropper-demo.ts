@@ -309,7 +309,7 @@ const INVALID_IMAGE = 'https://invalid.example/nonexistent.jpg';
 
   <section class="cropper-demo__section">
     <h2 class="cropper-demo__heading">Template-driven Form</h2>
-    <p class="cropper-demo__description">Using ngModel with the cropper. The model value is the cropped image data URL.</p>
+    <p class="cropper-demo__description">Using ngModel with the cropper.</p>
     <p-card>
       <div class="cropper-demo__card-body">
         <div class="max-w-800">
@@ -317,33 +317,39 @@ const INVALID_IMAGE = 'https://invalid.example/nonexistent.jpg';
             [src]="basicSrc"
             ngModel
             name="cropperModel"
-            #cropperModelRef="ngModel"
+            [(croppedImage)]="templateCropped"
             [rotationMin]="-10"
             [rotationMax]="10"
             (cropChange)="onTemplateCrop($event)"
           />
         </div>
-        <p class="text-xs cropper-demo__dimensions">Model value: {{ cropperModelRef.value?.length ? (cropperModelRef.value.length + ' chars') : 'none' }}</p>
+        @if (templateCropped()) {
+          <img [src]="templateCropped()" class="cropper-demo__preview" alt="Template-driven cropper output" />
+          <p class="text-xs cropper-demo__dimensions">{{ templateDimensions().width }} &times; {{ templateDimensions().height }} px</p>
+        }
       </div>
     </p-card>
   </section>
 
   <section class="cropper-demo__section">
     <h2 class="cropper-demo__heading">Reactive Form</h2>
-    <p class="cropper-demo__description">Using formControl with the cropper. The control value is the cropped image data URL.</p>
+    <p class="cropper-demo__description">Using formControl with the cropper.</p>
     <p-card>
       <div class="cropper-demo__card-body cropper-demo__card-body--stacked">
         <div class="max-w-800">
           <oic-cropper
             [src]="basicSrc"
             [formControl]="cropControl"
+            [(croppedImage)]="reactiveCropped"
             [rotationMin]="-10"
             [rotationMax]="10"
             (cropChange)="onReactiveCrop($event)"
           />
         </div>
-        <p class="text-xs cropper-demo__dimensions">Control value: {{ cropControl.value?.length ? (cropControl.value!.length + ' chars') : 'none' }}</p>
-        <p class="text-sm cropper-demo__dimensions">Control enabled: {{ cropControl.enabled }}</p>
+        @if (reactiveCropped()) {
+          <img [src]="reactiveCropped()" class="cropper-demo__preview" alt="Reactive form cropper output" />
+          <p class="text-xs cropper-demo__dimensions">{{ reactiveDimensions().width }} &times; {{ reactiveDimensions().height }} px</p>
+        }
         <div class="cropper-demo__button-row">
           <p-button label="Toggle disabled" [outlined]="true" (onClick)="cropControl.disabled ? cropControl.enable() : cropControl.disable()" />
         </div>
@@ -365,7 +371,10 @@ const INVALID_IMAGE = 'https://invalid.example/nonexistent.jpg';
             (cropChange)="onSignalCrop($event)"
           />
         </div>
-        <p class="text-xs cropper-demo__dimensions">Signal value: {{ signalCropped().length ? (signalCropped().length + ' chars') : 'none' }}</p>
+        @if (signalCropped()) {
+          <img [src]="signalCropped()" class="cropper-demo__preview" alt="Signal form cropper output" />
+          <p class="text-xs cropper-demo__dimensions">{{ signalDimensions().width }} &times; {{ signalDimensions().height }} px</p>
+        }
       </div>
     </p-card>
   </section>
@@ -405,6 +414,12 @@ export class CropperDemo {
 
   readonly cropControl = new FormControl<string>('');
   readonly signalCropped = signal('');
+
+  readonly templateCropped = signal('');
+  readonly templateDimensions = signal({ width: 0, height: 0 });
+  readonly reactiveCropped = signal('');
+  readonly reactiveDimensions = signal({ width: 0, height: 0 });
+  readonly signalDimensions = signal({ width: 0, height: 0 });
 
   readonly aspectOptions: { label: string; value: OicAspectRatioPreset }[] = [
     { label: 'Free', value: 'free' },
@@ -452,14 +467,14 @@ export class CropperDemo {
   }
 
   onTemplateCrop(result: OicCropperResult): void {
-    void result;
+    this.templateDimensions.set({ width: result.width, height: result.height });
   }
 
   onReactiveCrop(result: OicCropperResult): void {
-    void result;
+    this.reactiveDimensions.set({ width: result.width, height: result.height });
   }
 
   onSignalCrop(result: OicCropperResult): void {
-    void result;
+    this.signalDimensions.set({ width: result.width, height: result.height });
   }
 }
