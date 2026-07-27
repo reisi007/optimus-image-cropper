@@ -23,19 +23,19 @@ import { OIC_CROPPER_INTL } from './cropper.intl';
         [class.oic-cropper-toolbar--vertical]="orientation() === 'vertical'">
         <div class="oic-cropper-toolbar__group">
           <p-button rounded text severity="secondary" [ariaLabel]="intl.zoomIn" (onClick)="zoomIn.emit()">
-            <span data-p-icon="search-plus"></span>
+            <svg data-p-icon="search-plus"></svg>
           </p-button>
           <p-button rounded text severity="secondary" [ariaLabel]="intl.zoomOut" (onClick)="zoomOut.emit()">
-            <span data-p-icon="search-minus"></span>
+            <svg data-p-icon="search-minus"></svg>
           </p-button>
           <span class="oic-cropper-toolbar__value">{{ zoomLevel() }}%</span>
         </div>
         <div class="oic-cropper-toolbar__group">
           <p-button rounded text severity="secondary" [ariaLabel]="intl.rotateLeft" (onClick)="rotateLeft.emit()">
-            <span data-p-icon="undo"></span>
+            <svg data-p-icon="undo"></svg>
           </p-button>
           <p-button rounded text severity="secondary" [ariaLabel]="intl.rotateRight" (onClick)="rotateRight.emit()">
-            <span data-p-icon="refresh"></span>
+            <svg data-p-icon="refresh"></svg>
           </p-button>
           <p-slider
             class="oic-cropper-toolbar__slider"
