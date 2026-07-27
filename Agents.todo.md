@@ -107,14 +107,14 @@ Quelle: `packages/mat-extended/cropper/src/`
 
 ## Phase 7 — Demo-App (Route `/cropper`, Aura-Theme, kein Tailwind)
 
-- [ ] App-Setup: Optimus-Provider mit **Aura-Preset** aus `@openng/optimus-ui-themes`
-- [ ] Alle 11 Szenarien der Vorlage (`apps/demo/src/app/pages/cropper-demo/`) nachbauen:
+- [x] App-Setup: Optimus-Provider mit **Aura-Preset** aus `@openng/optimus-ui-themes`
+- [x] Alle 11 Szenarien der Vorlage (`apps/demo/src/app/pages/cropper-demo/`) nachbauen:
   Basic 16:9 · Square 1:1 · Free Aspect · Fixed Width · Error Handling · Dynamic Config ·
   Toolbar-Positionen (4×) · Constrain-to-Image · Template-driven Form · Reactive Form · Signal Form
-- [ ] Material-Ersatz: `mat-card`→Optimus `Card`, `mat-select`→`Select`, `mat-slide-toggle`→`ToggleSwitch`,
-      `mat-form-field/input`→`InputText`/`InputNumber`, `mat-button`→`Button`
-- [ ] Tailwind-Klassen durch eigenes Demo-SCSS ersetzen (Grid/Spacing/Container-Utilities)
-- [ ] SSR/Prerender analog Vorlage falls ohne Mehraufwand, sonst CSR
+- [x] Material-Ersatz: `mat-card`→Optimus `Card`, `mat-select`→`Select`, `mat-slide-toggle`→`ToggleSwitch`,
+      `mat-form-field/input`→`InputText`, `mat-button`→`Button`
+- [x] Tailwind-Klassen durch eigenes Demo-SCSS ersetzen (Grid/Spacing/Container-Utilities)
+- [x] CSR (kein SSR — SSR nicht in der Vorlage)
 
 ## Phase 8 — E2E (Playwright)
 

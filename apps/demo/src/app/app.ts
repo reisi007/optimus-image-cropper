@@ -5,18 +5,25 @@ import { RouterOutlet } from '@angular/router';
   imports: [RouterOutlet],
   selector: 'oic-root',
   template: `
-    <h1>Optimus Image Cropper</h1>
-    <router-outlet></router-outlet>
+    <header class="app-header">
+      <h1>Optimus Image Cropper</h1>
+    </header>
+    <main class="app-main">
+      <router-outlet></router-outlet>
+    </main>
   `,
   styles: [`
-    :host {
-      display: block;
-      padding: 2rem;
+    .app-header {
+      padding: 1.5rem 2rem 0.5rem;
     }
-    h1 {
+    .app-header h1 {
       font-size: 1.5rem;
       font-weight: 700;
-      margin: 0 0 1rem;
+      margin: 0;
+      color: var(--p-text-color, #212121);
+    }
+    .app-main {
+      padding: 0 0 2rem;
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
