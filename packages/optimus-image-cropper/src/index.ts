@@ -1,1 +1,10 @@
-export const OIC_VERSION = '0.0.1';
+export type { OicCropperOptions, OicCropRect, OicCropperResult, OicOutputFormat, OicAspectRatioPreset } from './core/cropper.types';
+export { OIC_CROPPER_DEFAULT_OPTIONS, OIC_CROPPER_DEFAULTS } from './core/cropper.config';
+export { OicCropperCanvas } from './core/cropper-canvas';
+export type { OicCropperDragMode } from './core/cropper-interaction';
+export { OicCropperInteraction } from './core/cropper-interaction';
+export { OicCropper } from './cropper/cropper.component';
+export { OicCropperGridOverlay } from './cropper/cropper-grid-overlay.component';
+export { OicCropperToolbar } from './cropper/cropper-toolbar.component';
+export { OIC_CROPPER_INTL } from './cropper/cropper.intl';
+export type { OicCropperIntl } from './cropper/cropper.intl';

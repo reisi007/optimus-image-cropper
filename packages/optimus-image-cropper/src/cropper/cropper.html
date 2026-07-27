@@ -1,0 +1,71 @@
+<div
+  class="oic-cropper__wrapper"
+  [class.oic-cropper__wrapper--horizontal]="toolbarPosition() === 'left' || toolbarPosition() === 'right'">
+  @if (toolbarPosition() === 'top' || toolbarPosition() === 'left') {
+    <oic-cropper-toolbar
+      [imageLoaded]="imageLoaded()"
+      [zoomLevel]="zoomLevel()"
+      [rotationAngle]="rotationAngle()"
+      [totalRotation]="rotation()"
+      [isAspectRatioFixed]="isAspectRatioFixed()"
+      [effectiveAspectRatio]="effectiveAspectRatio()"
+      [rotationMin]="rotationMin()"
+      [rotationMax]="rotationMax()"
+      [orientation]="toolbarPosition() === 'left' || toolbarPosition() === 'right' ? 'vertical' : 'horizontal'"
+      (zoomIn)="zoomIn()"
+      (zoomOut)="zoomOut()"
+      (rotateLeft)="rotateStep(-90)"
+      (rotateRight)="rotateStep(90)"
+      (rotationChange)="rotationAngle.set($event)"
+      (rotationStart)="onRotateSliderStart()"
+      (rotationEnd)="onRotateSliderEnd()"
+      (aspectChange)="effectiveAspectRatio.set($event)"
+    />
+  }
+
+  <div
+    class="oic-cropper__viewport"
+    [style.width]="widthStyle()"
+    #viewport
+    (pointerdown)="onPointerDown($event)"
+    (pointermove)="onPointerMove($event)"
+    (pointerup)="onPointerUp()"
+  >
+    <canvas #canvas class="oic-cropper__canvas"
+      [style.transform]="canvasTransform()"
+      [style.transform-origin]="'center center'"
+      [class.oic-cropper__canvas--transforming]="liveRotationDragging()"
+    ></canvas>
+
+    @if (imageLoaded()) {
+      <div class="oic-cropper__crop-overlay"
+        [style]="cropRectStyle()">
+        <ng-content select="[oicCropperOverlay]">
+          <oic-cropper-grid-overlay />
+        </ng-content>
+      </div>
+    }
+  </div>
+
+  @if (toolbarPosition() === 'bottom' || toolbarPosition() === 'right') {
+    <oic-cropper-toolbar
+      [imageLoaded]="imageLoaded()"
+      [zoomLevel]="zoomLevel()"
+      [rotationAngle]="rotationAngle()"
+      [totalRotation]="rotation()"
+      [isAspectRatioFixed]="isAspectRatioFixed()"
+      [effectiveAspectRatio]="effectiveAspectRatio()"
+      [rotationMin]="rotationMin()"
+      [rotationMax]="rotationMax()"
+      [orientation]="toolbarPosition() === 'left' || toolbarPosition() === 'right' ? 'vertical' : 'horizontal'"
+      (zoomIn)="zoomIn()"
+      (zoomOut)="zoomOut()"
+      (rotateLeft)="rotateStep(-90)"
+      (rotateRight)="rotateStep(90)"
+      (rotationChange)="rotationAngle.set($event)"
+      (rotationStart)="onRotateSliderStart()"
+      (rotationEnd)="onRotateSliderEnd()"
+      (aspectChange)="effectiveAspectRatio.set($event)"
+    />
+  }
+</div>

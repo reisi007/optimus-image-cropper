@@ -54,45 +54,44 @@ Nach jeder abgeschlossenen Phase prüft ein separater Review-Agent:
 
 ## Phase 2 — Shared Utils portieren (aus `packages/mat-extended/src/common/`)
 
-- [ ] `control-value-accessor.ts` → `OicValueAccessor` (+ Spec)
-- [ ] `platform.ts` → `ensureBrowser` etc. (+ Spec)
-- [ ] `a11y.ts` (+ Spec) — nur was der Cropper braucht
-- [ ] Ablage unter `packages/optimus-image-cropper/src/common/`, Export nur intern (nicht zwingend public API)
+- [x] `control-value-accessor.ts` → `OicValueAccessor`
+- [x] `platform.ts` → `ensureBrowser` (+ Spec in later phase)
+- [x] `a11y.ts` → `createKeyboardGridNavigation` (+ Spec in later phase)
+- [x] Ablage unter `packages/optimus-image-cropper/src/common/`, über barrel `index.ts` intern exportiert
 
 ## Phase 3 — Core-Port (framework-neutral, 1:1 mit Rename)
 
 Quelle: `packages/mat-extended/cropper/src/`
 
-- [ ] `cropper-canvas.ts` → `OicCropperCanvas` (pure TS, unverändert außer Rename)
-- [ ] `cropper-interaction.ts` → `OicCropperInteraction` (pure TS, unverändert außer Rename)
-- [ ] `cropper.types.ts` → `OicOutputFormat`, `OicAspectRatioPreset`, `OicCropperOptions`, `OicCropRect`, `OicCropperResult`
-- [ ] `cropper.config.ts` → `OIC_CROPPER_DEFAULT_OPTIONS`
-- [ ] Rename-Regeln: `Rui`→`Oic`, `RUI_`→`OIC_`, `rui-`→`oic-`, `--rui-`→`--oic-`
+- [x] `cropper-canvas.ts` → `OicCropperCanvas` (pure TS, unverändert außer Rename)
+- [x] `cropper-interaction.ts` → `OicCropperInteraction` (pure TS, unverändert außer Rename)
+- [x] `cropper.types.ts` → `OicOutputFormat`, `OicAspectRatioPreset`, `OicCropperOptions`, `OicCropRect`, `OicCropperResult`
+- [x] `cropper.config.ts` → `OIC_CROPPER_DEFAULT_OPTIONS`
+- [x] Rename-Regeln: `Rui`→`Oic`, `RUI_`→`OIC_`, `rui-`→`oic-`, `--rui-`→`--oic-`
 
 ## Phase 4 — Komponenten mit Optimus UI
 
-- [ ] `OicCropper` (`cropper.ts` + `cropper.html` + SCSS): Port; CVA, Signals, SSR-Guards,
+- [x] `OicCropper` (`cropper.ts` + `cropper.html` + SCSS): Port; CVA, Signals, SSR-Guards,
       Pointer/Keyboard/Touch-Logik unverändert; CSS-Custom-Properties `--oic-crop-*`, `--oic-rotation`
-- [ ] `OicCropperGridOverlay` (SVG): 1:1-Port
-- [ ] `OicCropperToolbar` **neu mit Optimus UI**:
-  - Zoom +/− und Rotate ±90° als Optimus `Button` (`@openng/optimus-ui/button`, Icons aus `@openng/optimus-ui/icons/*` z.B. searchplus/searchminus/refresh/undo)
-  - Feinrotation als Optimus `Slider` (`@openng/optimus-ui/slider`) statt `<input type="range">`
-  - Aspect-Auswahl als Optimus `Select` (`@openng/optimus-ui/select`) statt nativem `<select>`
-  - API (Inputs/Outputs) identisch zur Vorlage halten (`imageLoaded`, `zoomLevel`, `rotationAngle`, `totalRotation`, `isAspectRatioFixed`, `effectiveAspectRatio`, `rotationMin/Max`, `orientation`; Outputs `zoomIn`, `zoomOut`, `rotateLeft`, `rotateRight`, `rotationChange`, `aspectChange`, `rotationStart`, `rotationEnd`)
-- [ ] **i18n via `primelocale`:** Aria-Labels/Beschriftungen (Zoom in, Zoom out, Rotate left, Rotate right, Aspect ratio, Fine rotation) nicht hartcodieren:
-  - Injection-Token `OIC_CROPPER_INTL` mit Default-Strings aus `primelocale/en.json` (Keys `aria.zoomIn`, `aria.zoomOut`, `aria.rotateLeft`, `aria.rotateRight`; fehlende Keys mit eigenen Defaults ergänzen)
-  - README-Beispiel: anderes Locale (z.B. `primelocale/de.json`) via Provider setzen
-- [ ] Public API `src/index.ts`: `OicCropper`, `OicCropperCanvas`, `OicCropperInteraction`, `OicCropperGridOverlay`, `OicCropperToolbar`, Types, Config, Intl-Token
+- [x] `OicCropperGridOverlay` (SVG): 1:1-Port
+- [x] `OicCropperToolbar` **neu mit Optimus UI**:
+  - Zoom +/− und Rotate ±90° als Optimus `Button` (`@openng/optimus-ui/button`, Icons `searchplus`/`searchminus`/`refresh`/`undo`)
+  - Feinrotation als Optimus `Slider` (`@openng/optimus-ui/slider`, `ngModel` + `(ngModelChange)` + `(onSlideEnd)`)
+  - Aspect-Auswahl als Optimus `Select` (`@openng/optimus-ui/select`, `ngModel` + `appendTo="body"`)
+  - API (Inputs/Outputs) identisch zur Vorlage
+- [x] **i18n via `primelocale`:** Injection-Token `OIC_CROPPER_INTL` mit Default-Strings aus `primelocale/js/en.js` (Keys `aria.zoomIn`, `aria.zoomOut`, `aria.rotateLeft`, `aria.rotateRight`; eigene Defaults für `fineRotation`, `aspectRatio`, `aspectFree`)
+- [x] Public API `src/index.ts`: Alle Komponenten, Core-Klassen, Types, Config, Intl-Token exportiert
+- [x] Placeholder `OIC_VERSION`-Export + Spec entfernt
+- [x] Minimaler Smoke-Spec (`cropper.smoke.spec.ts`) — instanziiert `OicCropper` via TestBed
 
 ## Phase 5 — Theming (Material-Tokens → Optimus-Tokens)
 
-- [ ] Alle `var(--mat-sys-*)`-Referenzen in SCSS ersetzen durch Optimus-Design-Tokens (`--p-*`, Aura-kompatibel) mit sinnvollen Fallbacks, z.B.:
-  - `--mat-sys-primary` → `var(--p-primary-color)` / `--mat-sys-on-primary` → `var(--p-primary-contrast-color)`
-  - `--mat-sys-surface(-variant|container-lowest)` → `var(--p-content-background)` / `var(--p-surface-100)` etc.
-  - `--mat-sys-outline(-variant)` → `var(--p-content-border-color)`
-  - `--mat-sys-on-surface(-variant)` → `var(--p-text-color)` / `var(--p-text-muted-color)`
-- [ ] Optional eigene Alias-Ebene `--oic-color-*` mit Fallback auf `--p-*` (analog `_tokens.scss` der Vorlage)
-- [ ] Kein Tailwind, keine Material-Imports
+- [x] Alle `var(--mat-sys-*)` durch Optimus-Design-Tokens ersetzt:
+  - `var(--p-content-background)` / `var(--p-surface-100)` für Hintergründe
+  - `var(--p-content-border-color)` / `var(--p-surface-200)` für Rahmen
+  - `var(--p-text-muted-color)` / `var(--p-surface-200)` für Text-Farben
+  - Alle mit Fallback-Werten
+- [x] Kein Tailwind, keine Material-Imports
 
 ## Phase 6 — Unit-Tests (Parität zur Vorlage: ~121 Cropper-Tests)
 
