@@ -19,10 +19,10 @@ test.describe('Cropper', () => {
     await page.route('https://invalid.example/**', (route) => {
       route.fulfill({ status: 404 });
     });
-    await page.goto(DEMO_URLS.cropper);
+    await page.goto(DEMO_URLS.root);
   });
 
-  test('cropper route renders oic-cropper component', async ({ page }) => {
+  test('renders oic-cropper component', async ({ page }) => {
     await expect(page.locator('oic-cropper').first()).toBeAttached();
   });
 
