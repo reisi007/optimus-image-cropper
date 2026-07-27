@@ -160,14 +160,9 @@ Trusted Publishing konfigurierbar ist), danach CI-Publish ohne Token via OIDC.
 
 ## Phase 10 — README, Doku & GitHub-Repo
 
-- [ ] `README.md`: Install, Quickstart, komplette API-Tabelle (Inputs/Outputs/CVA/CSS-Vars) aus Vorlagen-README adaptiert, Theming-Hinweise (Aura/Tokens), primelocale-Beispiel (Locale wechseln)
-- [ ] **README-Abschnitt „Using with PrimeNG instead of Optimus UI"** (nur dokumentieren, NICHT umsetzen):
-  Optimus UI ist ein API-kompatibler PrimeNG-Fork — Migration per Organisations-/Paket-Rewrite:
-  - `@openng/optimus-ui` → `primeng` (Sub-Imports identisch: `…/button`, `…/slider`, `…/select`, `…/icons/*`)
-  - `@openng/optimus-ui-themes` → `@primeuix/themes` (Aura-Preset gleichnamig)
-  - Provider: Optimus-Theme-Provider → `providePrimeNG({ theme: { preset: Aura } })`
-  - Design-Tokens (`--p-*`) sind identisch, primelocale funktioniert für beide
-  - Optional: Hinweis auf pnpm-Override/Alias-Ansatz (`"primeng": "npm:@openng/optimus-ui@…"` bzw. umgekehrt), damit ohne Codeänderung gewechselt werden kann
+- [x] `README.md` (root + packages/optimus-image-cropper/README.md): Install, Quickstart, komplette API-Tabelle (Inputs/Outputs/CVA/CSS-Vars) auf Basis des tatsächlichen aktuellen Source (keine alten Rui-APIs), Theming-Hinweise (Aura/Tokens), primelocale-Beispiele (Locale wechseln mit `provideOicCropperIntlFromPrimeLocale`)
+- [x] **README-Abschnitt „Using with PrimeNG instead of Optimus UI"** (nur dokumentieren, NICHT umsetzen):
+  - Import-Mapping-Tabelle, Provider-Swap-Code, pnpm Override/Alias-Ansatz
 - [ ] `gh repo create reisi007/optimus-image-cropper --public`, Remote setzen — **PUSH ERST NACH MANUELLER FREIGABE durch den User** (Gate: vor `git push` explizit nachfragen)
 - [ ] GitHub Pages aktivieren (Workflow-basiert), Badge/Links in README
 
