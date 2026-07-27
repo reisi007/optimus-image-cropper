@@ -10,7 +10,6 @@
     "build:demo": "nx build demo",
     "e2e": "nx e2e demo-e2e"
   },
-  "private": true,
   "packageManager": "pnpm@11.10.0",
   "engines": {
     "node": ">=26",
