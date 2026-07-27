@@ -1,12 +1,24 @@
 # @all-the.rest/optimus-image-cropper
 
-[![CI](https://github.com/reisi007/optimus-image-cropper/actions/workflows/ci.yml/badge.svg)](https://github.com/reisi007/optimus-image-cropper/actions/workflows/ci.yml)
+Canvas-based Angular Image Cropper built on Optimus UI
+
 [![npm](https://img.shields.io/npm/v/@all-the.rest/optimus-image-cropper)](https://www.npmjs.com/package/@all-the.rest/optimus-image-cropper)
-[![MIT License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/reisi007/optimus-image-cropper/ci.yml)](https://github.com/reisi007/optimus-image-cropper/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/reisi007/optimus-image-cropper)](LICENSE)
 
-Canvas-based image cropping component for Angular, built on **Optimus UI** (`@openng/optimus-ui`, PrimeNG-compatible fork). Standalone, zoneless, Signals-based, with full keyboard, touch, and pointer support.
+> **[Live Demo](https://optimus-image-cropper.all-the.rest)** — try it now
 
-**[Demo](https://reisi007.github.io/optimus-image-cropper/)**
+---
+
+## Features
+
+- **Canvas-based** crop, zoom, rotate, and pan with real-time preview
+- **Touch + keyboard** support — pinch-to-zoom, arrow keys, keyboard shortcuts
+- **Angular 21** — standalone, signals-based, zoneless (`provideZonelessChangeDetection`)
+- **Optimus UI / PrimeNG theming** — Aura-compatible `--p-*` design tokens
+- **SSR-safe** — DOM/Canvas access behind `ensureBrowser()` guard
+- **ControlValueAccessor** — works with template-driven and reactive forms
+- **i18n** via `primelocale` (optional) with built-in en-US fallback
 
 ---
 
@@ -20,6 +32,8 @@ pnpm add @all-the.rest/optimus-image-cropper @openng/optimus-ui @openng/optimus-
 - `@angular/core`, `@angular/common`, `@angular/forms` — `^21.0.0`
 - `@openng/optimus-ui` — `^1.0.0-rc.1`
 - `primelocale` — `^2.4.0` (optional, for localized ARIA labels)
+
+---
 
 ## Quickstart
 
@@ -76,7 +90,7 @@ The library is **zoneless-safe** — use `provideZonelessChangeDetection()` in y
 | `rotationMin` | `number` | `-45` | Minimum fine-rotation slider value (degrees) |
 | `rotationMax` | `number` | `45` | Maximum fine-rotation slider value (degrees) |
 | `rotationStepInput` | `number` | `1` | Fine-rotation slider step (degrees) |
-| `constrainToImage` | `boolean` | `true` | When `true`, the crop selection cannot leave the visible image bounds during move, resize, zoom, or rotation |
+| `constrainToImage` | `boolean` | `true` | When `true`, the crop selection cannot leave the visible image bounds |
 | `toolbarPosition` | `'top' \| 'bottom' \| 'left' \| 'right'` | `'bottom'` | Toolbar placement relative to the viewport |
 | `width` | `string \| number` | `'100%'` | Viewport width (CSS value or pixel number) |
 
@@ -84,10 +98,10 @@ The library is **zoneless-safe** — use `provideZonelessChangeDetection()` in y
 
 | Output | Type | Description |
 |---|---|---|
-| `cropChange` | `OicCropperResult` | Emitted on every crop change (pointer up, rotation end, debounced during interactions) |
+| `cropChange` | `OicCropperResult` | Emitted on every crop change |
 | `loadError` | `string` | Emitted when image loading fails (the URL that failed) |
 
-### Two-way binding
+### Model (two-way binding)
 
 ```typescript
 readonly croppedImage = model<string>('');
@@ -132,6 +146,16 @@ When using CVA the `src` input is set via the form control value. The cropped im
 | `R` | Rotate 90° clockwise |
 
 Focus the component (`tabindex="0"`) for keyboard control.
+
+### CSS custom properties
+
+| Token | Fallback | Usage |
+|---|---|---|
+| `--p-content-background` | `--p-surface-100` / `#f5f5f5` | Toolbar and viewport background |
+| `--p-content-border-color` | `--p-surface-200` / `#e5e7eb` | Toolbar separators / borders |
+| `--p-text-muted-color` | `#6b7280` | Toolbar labels and values |
+
+The crop overlay receives percentage-based inline styles for positioning (not CSS custom properties).
 
 ### Overlay / content projection
 
@@ -210,15 +234,9 @@ The function reads `aria.zoomIn`, `aria.zoomOut`, `aria.rotateLeft`, `aria.rotat
 
 ## Theming
 
-The component is styled with Optimus design tokens (Aura-compatible `--p-*` CSS custom properties):
+The component is styled with Optimus design tokens (Aura-compatible `--p-*` CSS custom properties). See the [CSS custom properties](#css-custom-properties) table above for the tokens used.
 
-| Token | Fallback | Usage |
-|---|---|---|
-| `--p-content-background` | `--p-surface-100` / `#f5f5f5` | Toolbar and viewport background |
-| `--p-content-border-color` | `--p-surface-200` / `#e5e7eb` | Toolbar separators / borders |
-| `--p-text-muted-color` | `#6b7280` | Toolbar labels and values |
-
-The crop overlay receives percentage-based inline styles for positioning (not CSS custom properties). Apply your theme via Optimus UI's theme preset (e.g., Aura, Nora, Lara).
+Apply your theme via Optimus UI's theme preset (e.g., Aura, Nora, Lara). The crop overlay uses percentage-based inline styles for positioning.
 
 ---
 
@@ -286,16 +304,25 @@ Or the reverse — if you are on PrimeNG but want to consume this package (which
 
 ---
 
-## Development & Release
+## Development
 
-- **Release workflow:** See [`docs/RELEASING.md`](docs/RELEASING.md)
-- **Dev commands:**
-  - `pnpm nx build optimus-image-cropper` — build library
-  - `pnpm nx test optimus-image-cropper` — run unit tests (Vitest)
-  - `pnpm nx lint optimus-image-cropper` — lint
-  - `pnpm nx serve demo` — run demo application
-  - `pnpm nx e2e demo-e2e` — Playwright end-to-end tests
-- **Versioning:** Nx release with `currentVersionResolver: "git-tag"` — tag `v*` triggers npm publish via CI
+```bash
+pnpm install
+pnpm nx build optimus-image-cropper   # Library build
+pnpm nx test optimus-image-cropper    # Unit tests (Vitest)
+pnpm nx lint optimus-image-cropper    # ESLint
+pnpm nx serve demo                    # Demo application
+pnpm nx build demo                    # Demo build
+pnpm nx e2e demo-e2e                  # Playwright E2E
+```
+
+---
+
+## Release
+
+See [docs/RELEASING.md](docs/RELEASING.md) for the complete release process — first release manually, then CI-based via Tag-Push with Trusted Publishing (npm OIDC).
+
+---
 
 ## License
 

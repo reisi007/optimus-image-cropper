@@ -172,8 +172,11 @@ Trusted Publishing konfigurierbar ist), danach CI-Publish ohne Token via OIDC.
 - [x] `README.md` (root + packages/optimus-image-cropper/README.md): Install, Quickstart, komplette API-Tabelle (Inputs/Outputs/CVA/CSS-Vars) auf Basis des tatsächlichen aktuellen Source (keine alten Rui-APIs), Theming-Hinweise (Aura/Tokens), primelocale-Beispiele (Locale wechseln mit `provideOicCropperIntlFromPrimeLocale`)
 - [x] **README-Abschnitt „Using with PrimeNG instead of Optimus UI"** (nur dokumentieren, NICHT umsetzen):
   - Import-Mapping-Tabelle, Provider-Swap-Code, pnpm Override/Alias-Ansatz
-- [ ] `gh repo create reisi007/optimus-image-cropper --public`, Remote setzen — **PUSH ERST NACH MANUELLER FREIGABE durch den User** (Gate: vor `git push` explizit nachfragen)
-- [ ] GitHub Pages aktivieren (Workflow-basiert), Badge/Links in README
+- [x] `gh repo create reisi007/optimus-image-cropper --public`, Remote setzen (bereits erledigt — Repo existiert)
+- [x] GitHub Pages aktivieren (Workflow-basiert), Badge/Links in README (Pages ist aktiv via workflow)
+- [x] Repo-Metadaten aktualisiert: description, homepage, topics via `gh repo edit`
+- [x] README als Landingpage neu geschrieben: Features-Sektion, aktualisierter Demo-Link (custom domain), CSS-Vars-Tabelle, strukturiert nach 13 Punkten
+- [x] CI base-href überprüft: bereits auf `/` gesetzt (Commit 2d622f8) — kein Fix nötig
 
 ---
 
