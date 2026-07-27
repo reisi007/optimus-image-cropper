@@ -19,7 +19,7 @@ Portierung des Image Croppers aus `/Users/florianreisinger/dev/angular-material-
 
 ---
 
-## Phase 1 — Scaffold Workspace ✅ Grundlage, blockiert alles andere
+## Phase 1 — Scaffold Workspace ✅ Grundlage, blockiert alles andere (Review: PASS 2026-07-27)
 
 - [x] `git init`, `.gitignore`, `.editorconfig`, LICENSE (MIT), `pnpm` als Package Manager
 - [x] Nx-Workspace (Angular-21-kompatible Nx-Version 22.7.7) mit pnpm anlegen
@@ -34,7 +34,7 @@ Portierung des Image Croppers aus `/Users/florianreisinger/dev/angular-material-
 - [x] ESLint-Setup analog Vorlage; `pnpm nx build|test|lint` laufen durch
 - [x] Deps installieren: `@openng/optimus-ui`, `@openng/optimus-ui-themes`, `primelocale`
 
-## Phase 1b — Nacharbeiten Scaffold (neue Anforderungen)
+## Phase 1b — Nacharbeiten Scaffold (neue Anforderungen) (Review: PASS 2026-07-27)
 
 - [x] **Zoneless**: `zone.js` komplett entfernt (package.json, polyfills, test-setup), Demo auf
       `provideZonelessChangeDetection()`, Vitest-Setup ohne zone.js-Imports (zoneless TestBed via `setupTestBed`)
@@ -123,13 +123,16 @@ Quelle: `packages/mat-extended/cropper/src/`
 
 ## Phase 9 — CI/CD (GitHub Actions, wie Vorlage)
 
-- [ ] `.github/workflows/ci.yml` (push/PR auf `main`):
-  1. test-and-lint: `pnpm install` → `nx test` → `nx lint` → `nx build`
-  2. e2e: Lib+Demo bauen → Playwright → Report+Dist-Artefakte
-  3. deploy-demo (nur main): Demo-Dist → GitHub Pages (`actions/deploy-pages`)
-- [ ] `.github/workflows/release.yml` (Tag `v*`): System-Deps für node-canvas (`libcairo2-dev` …) →
-      Build/Test/Lint/E2E → npm publish `--provenance --access public`
-- [ ] Nx release: `currentVersionResolver: "git-tag"` in `nx.json`
+- [x] `.github/workflows/ci.yml` (push/PR auf `main`):
+  1. test-and-lint: `pnpm install --frozen-lockfile` → system deps für node-canvas → `nx test` → `nx lint` → `nx build`
+  2. e2e: Lib+Demo bauen → Playwright (beide Projekte chromium-desktop + mobile-chrome per Default) → Report + Dist-Artefakte
+  3. deploy-demo (nur main push, `needs: [test-and-lint, e2e]`): Rebuild Demo mit `--base-href=/optimus-image-cropper/` → `actions/configure-pages` → `upload-pages-artifact` → `deploy-pages`
+- [x] `.github/workflows/release.yml` (Tag `v*`):
+  - test-and-build: System-Deps für node-canvas → `pnpm install --frozen-lockfile` → build + test + lint lib → build demo → Playwright → Upload `dist`-Artefakt
+  - publish (needs test-and-build): `setup-node` mit npm registry → Download dist → `cd dist/packages/optimus-image-cropper && npm publish --provenance --access public` (mit `NODE_AUTH_TOKEN` aus `secrets.NPM_TOKEN`)
+- [x] Nx release: `currentVersionResolver: "git-tag"` in `nx.json` gesetzt
+- [x] Dateien erstellt, YAML-Syntax geprüft, initialer Commit `ci: add CI and release workflows`
+- [ ] **HINWEIS:** Tatsächliche CI/CD-Ausführung kann erst nach `git push` und GitHub-Setup verifiziert werden (Repo anlegen, Remote setzen, Secrets hinterlegen)
 
 ## Phase 10 — README, Doku & GitHub-Repo
 

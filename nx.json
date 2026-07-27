@@ -36,6 +36,7 @@
     "projects": ["optimus-image-cropper"],
     "projectsRelationship": "independent",
     "version": {
+      "currentVersionResolver": "git-tag",
       "preVersionCommand": "pnpm dlx nx run-many -t build"
     }
   },
