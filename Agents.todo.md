@@ -15,7 +15,7 @@ Portierung des Image Croppers aus `/Users/florianreisinger/dev/angular-material-
 - **Demo-Theme:** Aura (`@openng/optimus-ui-themes`)
 - **Kein Tailwind** — weder Library noch Demo (Demo-Layout mit eigenem SCSS)
 - **Keine Angular-Material-Abhängigkeit** — `--mat-sys-*`-Tokens werden ersetzt
-- **Button-/Aria-Strings:** aus **`primelocale`** (npm-Paket) beziehen, nicht hartcodieren
+- **Button-/Aria-Strings:** aus **`@openng/optimus-ui-locale`** (npm-Paket) beziehen, nicht hartcodieren
 
 ---
 
@@ -27,12 +27,12 @@ Portierung des Image Croppers aus `/Users/florianreisinger/dev/angular-material-
   - ng-packagr (`ng-package.json`, Entry `src/index.ts`), Ziel `dist/packages/optimus-image-cropper`
   - `package.json`: Name `@all-the.rest/optimus-image-cropper`,
     peerDependencies: `@angular/core|common|forms ^21`, `@openng/optimus-ui ^1.0.0-rc.1`
-  - dependency: `primelocale` (als dependency, nicht peer — per `allowedNonPeerDependencies` in ng-package.json freigegeben)
+  - dependency: `@openng/optimus-ui-locale` (als dependency, nicht peer — per `allowedNonPeerDependencies` in ng-package.json freigegeben)
 - [x] `apps/demo/` — Angular-App (`@angular/build:application`)
 - [x] `apps/demo-e2e/` — Playwright-Projekt
 - [x] Vitest-Setup: `@analogjs/vitest-angular`, `test-setup.ts`, devDeps `canvas` (node-canvas) + `vitest-canvas-mock`
 - [x] ESLint-Setup analog Vorlage; `pnpm nx build|test|lint` laufen durch
-- [x] Deps installieren: `@openng/optimus-ui`, `@openng/optimus-ui-themes`, `primelocale`
+- [x] Deps installieren: `@openng/optimus-ui`, `@openng/optimus-ui-themes`, `@openng/optimus-ui-locale`
 
 ## Phase 1b — Nacharbeiten Scaffold (neue Anforderungen) (Review: PASS 2026-07-27)
 
@@ -48,7 +48,7 @@ Portierung des Image Croppers aus `/Users/florianreisinger/dev/angular-material-
 Nach jeder abgeschlossenen Phase prüft ein separater Review-Agent:
 1. Sind alle Checkboxen der Phase wirklich erfüllt (Code inspizieren + Befehle ausführen)?
 2. Werden die Konventionen aus `AGENTS.md` eingehalten (Signals statt Dekoratoren/RxJS,
-   zoneless, kein Tailwind/Material, Prefixe, Tokens, primelocale)?
+   zoneless, kein Tailwind/Material, Prefixe, Tokens, optimus-ui-locale)?
 3. Ergebnis: Checkboxen in dieser Datei aktualisieren — erledigte Punkte abhaken,
    nicht erledigte Punkte präzise umformulieren, sodass der echte Stand sichtbar ist.
 
@@ -79,8 +79,8 @@ Quelle: `packages/mat-extended/cropper/src/`
   - Feinrotation als Optimus `Slider` (`@openng/optimus-ui/slider`, `ngModel` + `(ngModelChange)` + `(onSlideEnd)`)
   - Aspect-Auswahl als Optimus `Select` (`@openng/optimus-ui/select`, `ngModel` + `appendTo="body"`)
   - API (Inputs/Outputs) identisch zur Vorlage
-- [x] **i18n via `primelocale`:** Injection-Token `OIC_CROPPER_INTL` mit Default-Strings aus `primelocale/js/en.js` (Keys `aria.zoomIn`, `aria.zoomOut`, `aria.rotateLeft`, `aria.rotateRight`; eigene Defaults für `fineRotation`, `aspectRatio`, `aspectFree`)
-- [x] **primelocale optional machen:** `primelocale` als **optionale peerDependency** (`peerDependenciesMeta.optional: true`, aus `dependencies` + `allowedNonPeerDependencies` entfernt); eigebauter **en-US-Fallback** in `cropper.intl.ts` (statischer `OIC_CROPPER_INTL_DEFAULTS`-String-Satz), kein Import von primelocale im Library-Bundel; stattdessen `provideOicCropperIntlFromPrimeLocale(locale)` für Konsumenten, die ein primelocale-Locale-Objekt übergeben; `provideOicCropperIntl(partial)` für direkte Überschreibung
+- [x] **i18n via `@openng/optimus-ui-locale`:** Injection-Token `OIC_CROPPER_INTL` mit Default-Strings aus `@openng/optimus-ui-locale/js/en.js` (Keys `aria.zoomIn`, `aria.zoomOut`, `aria.rotateLeft`, `aria.rotateRight`; eigene Defaults für `fineRotation`, `aspectRatio`, `aspectFree`)
+- [x] **`@openng/optimus-ui-locale` optional machen:** als **optionale peerDependency** (`peerDependenciesMeta.optional: true`, aus `dependencies` + `allowedNonPeerDependencies` entfernt); eigebauter **en-US-Fallback** in `cropper.intl.ts` (statischer `OIC_CROPPER_INTL_DEFAULTS`-String-Satz), kein Import von `@openng/optimus-ui-locale` im Library-Bundel; stattdessen `provideOicCropperIntlFromLocale(locale)` für Konsumenten, die ein optimus-ui-locale-Locale-Objekt übergeben; `provideOicCropperIntl(partial)` für direkte Überschreibung
 - [x] Public API `src/index.ts`: Alle Komponenten, Core-Klassen, Types, Config, Intl-Token exportiert
 - [x] Placeholder `OIC_VERSION`-Export + Spec entfernt
 - [x] Minimaler Smoke-Spec (`cropper.smoke.spec.ts`) — instanziiert `OicCropper` via TestBed
@@ -169,7 +169,7 @@ Trusted Publishing konfigurierbar ist), danach CI-Publish ohne Token via OIDC.
 
 ## Phase 10 — README, Doku & GitHub-Repo
 
-- [x] `README.md` (root + packages/optimus-image-cropper/README.md): Install, Quickstart, komplette API-Tabelle (Inputs/Outputs/CVA/CSS-Vars) auf Basis des tatsächlichen aktuellen Source (keine alten Rui-APIs), Theming-Hinweise (Aura/Tokens), primelocale-Beispiele (Locale wechseln mit `provideOicCropperIntlFromPrimeLocale`)
+- [x] `README.md` (root + packages/optimus-image-cropper/README.md): Install, Quickstart, komplette API-Tabelle (Inputs/Outputs/CVA/CSS-Vars) auf Basis des tatsächlichen aktuellen Source (keine alten Rui-APIs), Theming-Hinweise (Aura/Tokens), optimus-ui-locale-Beispiele (Locale wechseln mit `provideOicCropperIntlFromLocale`)
 - [x] **README-Abschnitt „Using with PrimeNG instead of Optimus UI"** (nur dokumentieren, NICHT umsetzen):
   - Import-Mapping-Tabelle, Provider-Swap-Code, pnpm Override/Alias-Ansatz
 - [x] `gh repo create reisi007/optimus-image-cropper --public`, Remote setzen (bereits erledigt — Repo existiert)

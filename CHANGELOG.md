@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.1.2] — 2026-08-01
+
+### Added
+
+- Ported upstream panning fix `3cbc903`: crop rectangle now moves with the image during background panning to prevent it leaving image bounds
+- `docs/UPSTREAM.md`: documents the exact upstream baseline (`angular-material-extended` cropper @ `2aefa64`) and pending upstream changes
+
+### Changed
+
+- Upgraded `@openng/optimus-ui` / `@openng/optimus-ui-themes` to `1.0.0-rc.2` (Angular 21 stays)
+- Replaced `primelocale` with `@openng/optimus-ui-locale` (drop-in); provider renamed from `provideOicCropperIntlFromPrimeLocale` to `provideOicCropperIntlFromLocale`
+- Peer dependencies relaxed: `@angular/*` `^21.0.0`, `@openng/optimus-ui`/`@openng/optimus-ui-locale` `^1.0.0-rc.0`
+
 ## [0.1.1] — 2026-07-27
 
 ### Fixed

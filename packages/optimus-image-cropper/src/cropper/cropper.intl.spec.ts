@@ -4,7 +4,7 @@ import {
   OIC_CROPPER_INTL,
   OIC_CROPPER_INTL_DEFAULTS,
   provideOicCropperIntl,
-  provideOicCropperIntlFromPrimeLocale,
+  provideOicCropperIntlFromLocale,
 } from './cropper.intl';
 
 describe('OicCropperIntl', () => {
@@ -25,11 +25,11 @@ describe('OicCropperIntl', () => {
     expect(intl.fineRotation).toBe(OIC_CROPPER_INTL_DEFAULTS.fineRotation);
   });
 
-  it('should map primelocale-shaped object via provideOicCropperIntlFromPrimeLocale', () => {
+  it('should map locale-shaped object via provideOicCropperIntlFromLocale', () => {
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
       providers: [
-        provideOicCropperIntlFromPrimeLocale({
+        provideOicCropperIntlFromLocale({
           aria: {
             zoomIn: 'Rein',
             zoomOut: 'Uit',
@@ -49,11 +49,11 @@ describe('OicCropperIntl', () => {
     expect(intl.aspectFree).toBe(OIC_CROPPER_INTL_DEFAULTS.aspectFree);
   });
 
-  it('should fall back to en-US for missing primelocale keys', () => {
+  it('should fall back to en-US for missing locale keys', () => {
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
       providers: [
-        provideOicCropperIntlFromPrimeLocale({
+        provideOicCropperIntlFromLocale({
           aria: { zoomIn: 'Rein' },
         }),
       ],
@@ -65,10 +65,10 @@ describe('OicCropperIntl', () => {
     expect(intl.rotateRight).toBe(OIC_CROPPER_INTL_DEFAULTS.rotateRight);
   });
 
-  it('should handle empty/null primelocale object gracefully', () => {
+  it('should handle empty/null locale object gracefully', () => {
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
-      providers: [provideOicCropperIntlFromPrimeLocale({})],
+      providers: [provideOicCropperIntlFromLocale({})],
     });
     const intl = TestBed.inject(OIC_CROPPER_INTL);
     expect(intl).toEqual(OIC_CROPPER_INTL_DEFAULTS);

@@ -18,7 +18,7 @@ Canvas-based Angular Image Cropper built on Optimus UI
 - **Optimus UI / PrimeNG theming** — Aura-compatible `--p-*` design tokens
 - **SSR-safe** — DOM/Canvas access behind `ensureBrowser()` guard
 - **ControlValueAccessor** — works with template-driven and reactive forms
-- **i18n** via `primelocale` (optional) with built-in en-US fallback
+- **i18n** via `@openng/optimus-ui-locale` (optional) with built-in en-US fallback
 
 ---
 
@@ -31,7 +31,7 @@ pnpm add @all-the.rest/optimus-image-cropper @openng/optimus-ui @openng/optimus-
 **Peer dependencies:**
 - `@angular/core`, `@angular/common`, `@angular/forms` — `^21.0.0`
 - `@openng/optimus-ui` — `^1.0.0-rc.1`
-- `primelocale` — `^2.4.0` (optional, for localized ARIA labels)
+- `@openng/optimus-ui-locale` — `^1.0.0-rc.0` (optional, for localized ARIA labels)
 
 ---
 
@@ -181,7 +181,7 @@ The default overlay (`OicCropperGridOverlay`) provides a grid with rule-of-third
 | `OIC_CROPPER_INTL` | `InjectionToken<OicCropperIntl>` | Internationalized ARIA labels and UI strings |
 | `OIC_CROPPER_INTL_DEFAULTS` | `OicCropperIntl` | Default en-US string constants |
 | `provideOicCropperIntl(...)` | provider factory | Merge partial `OicCropperIntl` over defaults |
-| `provideOicCropperIntlFromPrimeLocale(...)` | provider factory | Derive strings from a `primelocale` locale object |
+| `provideOicCropperIntlFromLocale(...)` | provider factory | Derive strings from an `@openng/optimus-ui-locale` locale object |
 | `OicCropperOptions` | interface | Config object for `OIC_CROPPER_DEFAULT_OPTIONS` |
 | `OicCropperResult` | interface | Crop result metadata + data-URL + blob |
 | `OicCropRect` | interface | Normalized crop rectangle (`0`–`1`) |
@@ -213,17 +213,17 @@ bootstrapApplication(AppComponent, {
 });
 ```
 
-### primelocale integration (optional)
+### `@openng/optimus-ui-locale` integration (optional)
 
-Install `primelocale` and pass any locale object:
+Install `@openng/optimus-ui-locale` and pass any locale object:
 
 ```typescript
-import { provideOicCropperIntlFromPrimeLocale } from '@all-the.rest/optimus-image-cropper';
-import { de } from 'primelocale/js/de.js';
+import { provideOicCropperIntlFromLocale } from '@all-the.rest/optimus-image-cropper';
+import { de } from '@openng/optimus-ui-locale/js/de.js';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideOicCropperIntlFromPrimeLocale(de),
+    provideOicCropperIntlFromLocale(de),
   ],
 });
 ```
@@ -256,7 +256,7 @@ Apply your theme via Optimus UI's theme preset (e.g., Aura, Nora, Lara). The cro
 | `@openng/optimus-ui-themes` | `@primeuix/themes` |
 | `provideOptimus(...)` | `providePrimeNG(...)` |
 | Design tokens | Identical (`--p-*`) |
-| `primelocale` | Works for both |
+| `@openng/optimus-ui-locale` | Works for both |
 
 ### Provider swap
 

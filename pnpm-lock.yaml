@@ -30,14 +30,14 @@ importers:
         specifier: ^21.2.18
         version: 21.2.18(@angular/common@21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.18(@angular/animations@21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
       '@openng/optimus-ui':
-        specifier: 1.0.0-rc.1
-        version: 1.0.0-rc.1(a105f97ab8dc94f8b0350c395a94ddaf)
+        specifier: 1.0.0-rc.2
+        version: 1.0.0-rc.2(a105f97ab8dc94f8b0350c395a94ddaf)
+      '@openng/optimus-ui-locale':
+        specifier: 1.0.0-rc.2
+        version: 1.0.0-rc.2
       '@openng/optimus-ui-themes':
-        specifier: 1.0.0-rc.1
-        version: 1.0.0-rc.1
-      primelocale:
-        specifier: ^2.4.0
-        version: 2.4.0
+        specifier: 1.0.0-rc.2
+        version: 1.0.0-rc.2
       rxjs:
         specifier: ~7.8.2
         version: 7.8.2
@@ -193,11 +193,11 @@ importers:
         specifier: ^21.0.0
         version: 21.2.18(@angular/common@21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.18(@angular/animations@21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
       '@openng/optimus-ui':
-        specifier: ^1.0.0-rc.1
-        version: 1.0.0-rc.1(a105f97ab8dc94f8b0350c395a94ddaf)
-      primelocale:
-        specifier: ^2.4.0
-        version: 2.4.0
+        specifier: ^1.0.0-rc.0
+        version: 1.0.0-rc.2(a105f97ab8dc94f8b0350c395a94ddaf)
+      '@openng/optimus-ui-locale':
+        specifier: ^1.0.0-rc.0
+        version: 1.0.0-rc.2
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
@@ -2393,26 +2393,29 @@ packages:
   '@nx/workspace@22.7.7':
     resolution: {integrity: sha512-tDSOWUEjTyEjoUKGSFyUGrFaCpScoFa8lRR0jorM169a3dA4iqwgkppcltR/uwklLw/aNSSW6J92DAzSRuOLnA==}
 
-  '@openng/optimus-ui-motion@1.0.0-rc.1':
-    resolution: {integrity: sha512-6wrbffQ4psuyQf2nicI+trSmJjzGrGg2iheA+VOtn4bSV4XQr5PNeJJh0zi490qA7gaIcNbERcxjDmuP0ngb4g==}
+  '@openng/optimus-ui-locale@1.0.0-rc.2':
+    resolution: {integrity: sha512-ye0rb8SP4NZAE8ZcpIKG114JI5AolCt6eUpKd+iMw9mBoc74y8t56Wwr5fpu81vKAMURppkOE1w4q9RJHqf0PA==}
+
+  '@openng/optimus-ui-motion@1.0.0-rc.2':
+    resolution: {integrity: sha512-nuZ7Ahi0xwKldpT55pl0bbMz+BWW8j+weBXHEQgPpdjH9+hENfgAtAmdsZ4AX0sIO2kq8kjA1LXwvDpHfxuR5A==}
     engines: {node: '>=12.11.0'}
 
-  '@openng/optimus-ui-styled@1.0.0-rc.1':
-    resolution: {integrity: sha512-FJoPTW4h2o3knluAAF4GgoX2j/fbepZzJz6KKaNYoCgzEBgv9gGx0rwNDQ9hXvANBm723vxBa+0cEl7j8p33Og==}
+  '@openng/optimus-ui-styled@1.0.0-rc.2':
+    resolution: {integrity: sha512-6LGSvUxrVfgE7X9CJPVCPFWDiDlYv3Pkod95ou7aYfuG8h2tCTbVLZrZb+Nb+Xjqro81zJdi4klzBR6BNaMDAg==}
     engines: {node: '>=12.11.0'}
 
-  '@openng/optimus-ui-styles@1.0.0-rc.1':
-    resolution: {integrity: sha512-Cb+vse4Qp0NVX7raEsh6oZSbD0GAD6qRxON2y7z3gx0lF4UnGjlffGe8BknqkK5wN8upik2U5KQDkNWcunIFPQ==}
+  '@openng/optimus-ui-styles@1.0.0-rc.2':
+    resolution: {integrity: sha512-Y9G5fEeYDHqElWycRdrRR1CuWV7yd4UE7kj7hBZQgTtLMwA+jE0gQ+zjcx2hfbbo2t3v8Sg0k7yiFIU+tApD/g==}
 
-  '@openng/optimus-ui-themes@1.0.0-rc.1':
-    resolution: {integrity: sha512-1IFIffgpx9GwK0wyRZL/WNwGSGOwl7vuoECNYC8P+37ikT6WgPWCVdnr+uFJYNFCXmlvisyuJjMXpwb9cHw4uw==}
+  '@openng/optimus-ui-themes@1.0.0-rc.2':
+    resolution: {integrity: sha512-tjVQxAWK0C6xnJoHJXkibSHAtnEaVGuwrIhDABI3UYHh1Me24ZiMfGN7GB1AX6eITolfICJIzboEK+5cTI9E+Q==}
 
-  '@openng/optimus-ui-utils@1.0.0-rc.1':
-    resolution: {integrity: sha512-cQTFC50dBQSd1eoFO6q7YqDEx71KGMgGGb0OSHWhYnucuQSVU/IUl/CCojGsR7qBZt1HT+2PqnprrIJRMJcVPQ==}
+  '@openng/optimus-ui-utils@1.0.0-rc.2':
+    resolution: {integrity: sha512-QObirFUdeQicu5tINbr24pzfpTZAuOy4hMGcHr7LQTUab2qjNSftX0ZYZJSL2oN29hGh1SrrzttdObp/Msjh+Q==}
     engines: {node: '>=12.11.0'}
 
-  '@openng/optimus-ui@1.0.0-rc.1':
-    resolution: {integrity: sha512-HEAAomHjl/iZIr+jQHAwDMYU+ANIU7jsgs8s7Pjnzhe0jkMdi81QlVf9vP3iV6CgYxGbEzxQ31xf4xZI6FNHpQ==}
+  '@openng/optimus-ui@1.0.0-rc.2':
+    resolution: {integrity: sha512-ag/rKhHDmBTF5E2XBASqxQiKXsM+wbS8d8Fe/Mik6iexT4FZ25Ad7Ysh5TSXJHhuTEIV8DLjArZov75rvA9IQg==}
     peerDependencies:
       '@angular/cdk': ^21.0.0
       '@angular/common': ^21.0.0
@@ -6236,10 +6239,6 @@ packages:
     resolution: {integrity: sha512-OpN0zzVdiaiAhxpuuj5efpIS4sY9j7bY6uR5mnj5yPzGkdkjNKSJeUThPb60Jw29QuAZgA4o+/iB49kFiaBX6g==}
     engines: {node: '>=14'}
     hasBin: true
-
-  primelocale@2.4.0:
-    resolution: {integrity: sha512-+FxfN+NjImzSoFTE8n5TLidMucC+7pl1DZKrNokgcMPbN7iVWYtb9+zC+y9ZSkn81vDa328PiCPh966gSjW6zQ==}
-    engines: {node: '>=18.0.0', npm: '>=8.6.0'}
 
   probe-image-size@7.3.0:
     resolution: {integrity: sha512-7CaDeBwiAbh6ohXsvLbAZhO7wzsZAmaevfxe39qvCwRh8LyaZfDlBGGLU1CCTgrTLtCOdwBBhjOrIHaIIimHfQ==}
@@ -10502,25 +10501,27 @@ snapshots:
       - '@swc/core'
       - debug
 
-  '@openng/optimus-ui-motion@1.0.0-rc.1':
+  '@openng/optimus-ui-locale@1.0.0-rc.2': {}
+
+  '@openng/optimus-ui-motion@1.0.0-rc.2':
     dependencies:
-      '@openng/optimus-ui-utils': 1.0.0-rc.1
+      '@openng/optimus-ui-utils': 1.0.0-rc.2
 
-  '@openng/optimus-ui-styled@1.0.0-rc.1':
+  '@openng/optimus-ui-styled@1.0.0-rc.2':
     dependencies:
-      '@openng/optimus-ui-utils': 1.0.0-rc.1
+      '@openng/optimus-ui-utils': 1.0.0-rc.2
 
-  '@openng/optimus-ui-styles@1.0.0-rc.1':
+  '@openng/optimus-ui-styles@1.0.0-rc.2':
     dependencies:
-      '@openng/optimus-ui-styled': 1.0.0-rc.1
+      '@openng/optimus-ui-styled': 1.0.0-rc.2
 
-  '@openng/optimus-ui-themes@1.0.0-rc.1':
+  '@openng/optimus-ui-themes@1.0.0-rc.2':
     dependencies:
-      '@openng/optimus-ui-styled': 1.0.0-rc.1
+      '@openng/optimus-ui-styled': 1.0.0-rc.2
 
-  '@openng/optimus-ui-utils@1.0.0-rc.1': {}
+  '@openng/optimus-ui-utils@1.0.0-rc.2': {}
 
-  '@openng/optimus-ui@1.0.0-rc.1(a105f97ab8dc94f8b0350c395a94ddaf)':
+  '@openng/optimus-ui@1.0.0-rc.2(a105f97ab8dc94f8b0350c395a94ddaf)':
     dependencies:
       '@angular/cdk': 21.2.14(@angular/common@21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.18(@angular/animations@21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
       '@angular/common': 21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
@@ -10528,10 +10529,10 @@ snapshots:
       '@angular/forms': 21.2.18(@angular/common@21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.18(@angular/animations@21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
       '@angular/platform-browser': 21.2.18(@angular/animations@21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))
       '@angular/router': 21.2.18(@angular/common@21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@21.2.18(@angular/animations@21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@21.2.18(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@21.2.18(@angular/compiler@21.2.18)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
-      '@openng/optimus-ui-motion': 1.0.0-rc.1
-      '@openng/optimus-ui-styled': 1.0.0-rc.1
-      '@openng/optimus-ui-styles': 1.0.0-rc.1
-      '@openng/optimus-ui-utils': 1.0.0-rc.1
+      '@openng/optimus-ui-motion': 1.0.0-rc.2
+      '@openng/optimus-ui-styled': 1.0.0-rc.2
+      '@openng/optimus-ui-styles': 1.0.0-rc.2
+      '@openng/optimus-ui-utils': 1.0.0-rc.2
       rxjs: 7.8.2
       tslib: 2.8.1
 
@@ -14638,8 +14639,6 @@ snapshots:
   prelude-ls@1.2.1: {}
 
   prettier@3.9.6: {}
-
-  primelocale@2.4.0: {}
 
   probe-image-size@7.3.0:
     dependencies:

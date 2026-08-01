@@ -20,7 +20,7 @@ export default [
             '@angular/core',
             '@angular/forms',
             '@openng/optimus-ui',
-            'primelocale',
+            '@openng/optimus-ui-locale',
             'tslib',
           ],
         },

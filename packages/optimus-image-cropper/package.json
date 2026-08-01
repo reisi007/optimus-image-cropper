@@ -1,6 +1,6 @@
 {
   "name": "@all-the.rest/optimus-image-cropper",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Optimus UI Image Cropper — Canvas-based image cropping component for Angular",
   "license": "MIT",
   "author": "Florian Reisinger",
@@ -25,11 +25,11 @@
     "@angular/common": "^21.0.0",
     "@angular/core": "^21.0.0",
     "@angular/forms": "^21.0.0",
-    "@openng/optimus-ui": "^1.0.0-rc.1",
-    "primelocale": "^2.4.0"
+    "@openng/optimus-ui": "^1.0.0-rc.0",
+    "@openng/optimus-ui-locale": "^1.0.0-rc.0"
   },
   "peerDependenciesMeta": {
-    "primelocale": {
+    "@openng/optimus-ui-locale": {
       "optional": true
     }
   },

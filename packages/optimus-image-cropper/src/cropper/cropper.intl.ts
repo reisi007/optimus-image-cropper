@@ -34,7 +34,7 @@ export function provideOicCropperIntl(intl: Partial<OicCropperIntl>): Provider[]
   ];
 }
 
-export function provideOicCropperIntlFromPrimeLocale(locale: {
+export function provideOicCropperIntlFromLocale(locale: {
   aria?: Record<string, string>;
 }): Provider[] {
   const aria = locale?.aria ?? {};

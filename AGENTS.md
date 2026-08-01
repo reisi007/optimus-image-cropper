@@ -11,7 +11,7 @@ Canvas-basierter Angular Image Cropper (`OicCropper`) auf Basis von **Optimus UI
 - Library: `packages/optimus-image-cropper` → npm `@all-the.rest/optimus-image-cropper` (ng-packagr)
 - Demo: `apps/demo` (Aura-Theme aus `@openng/optimus-ui-themes`), E2E: `apps/demo-e2e` (Playwright)
 - Tests: **Vitest** (`@analogjs/vitest-angular`), node-canvas (`canvas`) für Canvas-Tests
-- i18n-Strings (Aria/Buttons): **`primelocale`**
+- i18n-Strings (Aria/Buttons): **`@openng/optimus-ui-locale`**
 
 ## Befehle
 
@@ -38,8 +38,19 @@ Nach jeder Code-Änderung: build + test + lint der Library ausführen.
 - Styling über Optimus-Design-Tokens `var(--p-*)` (Aura-kompatibel), keine `--mat-sys-*`
 - Core-Klassen `OicCropperCanvas` / `OicCropperInteraction` bleiben framework-neutral (pure TS)
 - SSR-sicher: DOM/Canvas-Zugriffe nur hinter `ensureBrowser()`
-- Aria-Labels der Toolbar aus `primelocale` (Token `OIC_CROPPER_INTL`), nicht hartcodieren
+- Aria-Labels der Toolbar aus `@openng/optimus-ui-locale` (Token `OIC_CROPPER_INTL`), nicht hartcodieren
 - Keine Kommentare im Code, sofern nicht explizit gefordert
+
+## Upstream-Tracking
+
+- Dieses Projekt ist ein Port des Croppers aus `angular-material-extended`
+  (`packages/mat-extended/cropper`). Der **exakte Upstream-Stand** (Basis-Commit)
+  und alle seit der Portierung fehlenden Upstream-Änderungen stehen in
+  **`docs/UPSTREAM.md`**.
+- **Regel:** Bei jedem Übernehmen von Upstream-Änderungen `docs/UPSTREAM.md`
+  aktualisieren (Basis-Commit, Datum, abgehakte Änderungen). Ausstehende
+  Upstream-Fixes (Stand 2026-08-01): Panning-Fix `3cbc903` (Crop-Rechteck beim
+  Hintergrund-Verschieben mitbewegen) und kleinere Anpassungen aus `03ae35e`.
 
 ## Release / CI
 
@@ -57,7 +68,7 @@ Nach jeder Code-Änderung: build + test + lint der Library ausführen.
 - Nach **jedem** abgeschlossenen Schritt prüft ein **separater Review-Subagent**,
   ob die Punkte wirklich erledigt sind und die Konventionen dieser Datei eingehalten
   werden (Signals statt `@Input`/`@Output`/RxJS, zoneless, kein Tailwind/Material,
-  Prefixe, Tokens, primelocale, Chrome Desktop + Mobile in E2E)
+  Prefixe, Tokens, optimus-ui-locale, Chrome Desktop + Mobile in E2E)
 - Ergebnis des Reviews: Checkboxen in `Agents.todo.md` abhaken oder so umschreiben,
   dass der tatsächliche Stand sichtbar ist; veraltete Angaben in `AGENTS.md` korrigieren
 - **Push-Gate:** `git push` (und Repo-Anlage-Push) erst nach expliziter manueller
