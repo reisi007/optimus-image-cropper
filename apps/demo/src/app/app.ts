@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink } from '@angular/router';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterLink],
   selector: 'oic-root',
   template: `
     <header class="app-header">
@@ -12,6 +12,10 @@ import { RouterOutlet } from '@angular/router';
     <main class="app-main">
       <router-outlet></router-outlet>
     </main>
+    <footer class="app-footer">
+      <a routerLink="/impressum">Impressum</a>
+      <a href="https://all-the.rest/datenschutz" target="_blank" rel="noopener">Datenschutz</a>
+    </footer>
   `,
   styles: [`
     .app-header {
@@ -32,6 +36,24 @@ import { RouterOutlet } from '@angular/router';
     }
     .app-main {
       padding: 0 0 2rem;
+      min-height: calc(100vh - 150px);
+    }
+    .app-footer {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      padding: 1.5rem;
+      font-size: 0.875rem;
+      color: var(--p-text-muted-color, #616161);
+      border-top: 1px solid var(--p-content-border-color, #e0e0e0);
+    }
+    .app-footer a {
+      color: var(--p-text-muted-color, #616161);
+      text-decoration: none;
+    }
+    .app-footer a:hover {
+      color: var(--p-text-color, #212121);
+      text-decoration: underline;
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
