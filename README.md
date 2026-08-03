@@ -30,8 +30,8 @@ pnpm add @all-the.rest/optimus-image-cropper @openng/optimus-ui @openng/optimus-
 
 **Peer dependencies:**
 - `@angular/core`, `@angular/common`, `@angular/forms` — `^21.0.0`
-- `@openng/optimus-ui` — `^1.0.0-rc.0`
-- `@openng/optimus-ui-locale` — `^1.0.0-rc.0` (optional, for localized ARIA labels)
+- `@openng/optimus-ui` — `^1.0.0`
+- `@openng/optimus-ui-locale` — `^1.0.0` (optional, for localized ARIA labels)
 
 ---
 
@@ -282,7 +282,7 @@ Add to `package.json` to use PrimeNG without changing any imports:
 {
   "pnpm": {
     "overrides": {
-      "primeng": "npm:@openng/optimus-ui@^1.0.0-rc.1"
+      "primeng": "npm:@openng/optimus-ui@^1.0.0"
     }
   }
 }
