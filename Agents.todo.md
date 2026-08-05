@@ -2,13 +2,14 @@
 
 Portierung des Image Croppers aus `/Users/florianreisinger/dev/angular-material-extended`
 (Quelle: `packages/mat-extended/cropper/`) in ein eigenständiges Projekt auf Basis von
-**Optimus UI** (`@openng/optimus-ui`, PrimeNG-kompatibler Fork für Angular 21).
+**Optimus UI** (`@openng/optimus-ui`, PrimeNG-kompatibler Fork für Angular 22).
 
 ## Rahmenbedingungen / Entscheidungen
 
 - **Workspace:** Nx + pnpm (wie Vorlage), Vitest (`@analogjs/vitest-angular`), Playwright
-- **Angular:** 21.x (Optimus UI peerDependency `^21.0.0` — Vorlage nutzt 22, hier bewusst 21!)
-- **Nx-Version:** passend zu Angular 21 wählen (Nx 22.x; Nx 23 verlangt Angular 22)
+- **Angular:** 22.x (Vorgabe durch Optimus UI peerDependency `^22.0.0`); keine eigene Angular-Version vorziehen — Optimus UI 2.x gibt die Angular-Version vor
+- **Optimus UI:** 2.0.0-rc.0 (`@openng/optimus-ui`, `-locale`, `-themes`); Library-peerDependencies `@angular/*` `^22.0.0` / `@openng/optimus-ui|locale` `^2.0.0-rc.0`
+- **Nx-Version:** 23.1.0 (Nx 23 — verlangt Angular 22)
 - **npm-Paket:** `@all-the.rest/optimus-image-cropper`
 - **Prefix:** `Oic` / `oic-` (statt `Rui` / `rui-`), Token-Prefix `--oic-*`, DI-Token `OIC_*`
 - **GitHub:** `reisi007/optimus-image-cropper` (public), Demo-Deploy auf GitHub Pages
@@ -16,6 +17,7 @@ Portierung des Image Croppers aus `/Users/florianreisinger/dev/angular-material-
 - **Kein Tailwind** — weder Library noch Demo (Demo-Layout mit eigenem SCSS)
 - **Keine Angular-Material-Abhängigkeit** — `--mat-sys-*`-Tokens werden ersetzt
 - **Button-/Aria-Strings:** aus **`@openng/optimus-ui-locale`** (npm-Paket) beziehen, nicht hartcodieren
+- **Stand aktualisiert:** 2026-08-05 (Angular 21 → 22, optimus-ui 1.x → 2.0.0-rc.0; Phasen-Checkboxen dokumentieren die Historie und bleiben unverändert)
 
 ---
 

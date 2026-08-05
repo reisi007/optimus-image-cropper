@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0] — 2026-08-05
+
+### Changed
+
+- Upgraded to Angular 22 (`@angular/*` `^22.1.0`, `@angular-devkit/*` `^22.1.3`, TypeScript `~6.0.3`)
+- Upgraded `@openng/optimus-ui` / `@openng/optimus-ui-locale` / `@openng/optimus-ui-themes` to `2.0.0-rc.0`; removed deprecated `@angular/animations`
+- **Breaking:** library peer dependencies raised to `@angular/*` `^22.0.0` and `@openng/optimus-ui`/`@openng/optimus-ui-locale` `^2.0.0-rc.0` — consumers on Angular 21 / optimus-ui 1.x must upgrade
+
 ## [0.1.2] — 2026-08-01
 
 ### Added

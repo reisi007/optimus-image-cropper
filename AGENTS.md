@@ -7,7 +7,7 @@ Canvas-basierter Angular Image Cropper (`OicCropper`) auf Basis von **Optimus UI
 ## Tech-Stack
 
 - Nx Monorepo + **pnpm** (Node >= 26, pnpm 11.10.0)
-- **Angular 21** (Vorgabe durch Optimus UI peerDependency `^21.0.0` — NICHT auf 22 heben)
+- **Angular 22** (Vorgabe durch Optimus UI peerDependency `^22.0.0`); keine eigene Angular-Version vorziehen — Optimus UI 2.x gibt die Angular-Version vor
 - Library: `packages/optimus-image-cropper` → npm `@all-the.rest/optimus-image-cropper` (ng-packagr)
 - Demo: `apps/demo` (Aura-Theme aus `@openng/optimus-ui-themes`), E2E: `apps/demo-e2e` (Playwright)
 - Tests: **Vitest** (`@analogjs/vitest-angular`), node-canvas (`canvas`) für Canvas-Tests
